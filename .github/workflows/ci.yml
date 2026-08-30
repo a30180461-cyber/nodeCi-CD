@@ -20,16 +20,16 @@ jobs:
         run: npm ci
 
       - name: Build the docker image
-        run: docker build -t my-app .
+        run: docker build -t node-app ./app
 
       - name: Load the image into the cluster
-        run: kind load image myapp:latest
+        run: kind load docker-image node-app:latest
 
       - name: Deploy via helm
-        run:  helm upgrade --install myapp:latest .
+        run:  helm upgrade --install samplenode-app ./helm
 
       - name: Verify the deployment
-        run : kubectl rollout status deployment/myapp
+        run : kubectl rollout status deployment/samplenode-app
 
       - name: Check the status of the pods
         run: kubectl get pods
