@@ -1,0 +1,15 @@
+
+replicaCount: 1
+
+image:
+  repository: node-app
+  pullPolicy: Never
+  tag: "latest"
+
+
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8000
+
