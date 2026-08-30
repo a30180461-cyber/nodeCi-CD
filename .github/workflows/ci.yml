@@ -17,6 +17,7 @@ jobs:
         uses: helm/kind-action@v1
         
       - name: Install dependencies
+        working-directory: ./app
         run: npm ci
 
       - name: Build the docker image
