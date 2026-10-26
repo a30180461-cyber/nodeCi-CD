@@ -24,7 +24,7 @@ jobs:
         run: docker build -t node-app ./app
 
       - name: Load the image into the cluster
-        run: kind load docker-image node-app:latest
+        run: kind load docker-image node-app:latest --name chart-testing
 
       - name: Deploy via helm
         run:  helm upgrade --install samplenode-app ./helm
